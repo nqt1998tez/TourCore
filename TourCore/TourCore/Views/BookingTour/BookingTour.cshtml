@@ -1,0 +1,21 @@
+﻿@model TourCore.Models.ViewModels.TourViewModel
+
+@using (Html.BeginForm("BookingTour", "BookingTour", FormMethod.Post, new { @class = "row" }))
+{
+    <div class="col-sm-6 form-group contact-forms">
+        @*<input type="text" class="form-control" placeholder="Name" required="">*@
+        @Html.TextBox("Name","",new {@class="form-control",@placeholder="Name"})
+    </div>
+    <div class="col-sm-6 form-group contact-forms">
+        @Html.TextBox("Email", "", new { @class = "form-control", @placeholder = "Email" })
+    </div>
+    <div class="col-sm-6 form-group contact-forms">
+        @Html.TextBox("Phone", "", new { @class = "form-control", @placeholder = "Phone" })
+    </div>
+    <div class="col-sm-6 form-group contact-forms">
+        <input type="date" name="DOB" class="form-control" placeholder="Date"/>
+    </div>
+    <div class="col-md-12 booking-button">
+        <button type="submit" class="btn btn-block sent-butnn">Book Now</button>
+    </div>
+}
