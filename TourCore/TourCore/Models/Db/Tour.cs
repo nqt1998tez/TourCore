@@ -25,7 +25,10 @@ namespace TourCore.Models.Db
         public bool NewTour { get; set; }
         public decimal Discount { get; set; }
         public int NumberBooking { get; set; }
+        public int InTour { get; set; }
+        public int OutTour { get; set; }
         public int Quantity { get; set; }
+        public string Description { get; set; }
         //[ForeignKey("Supplier")]
         //public int SupplierId { get; set; }
 

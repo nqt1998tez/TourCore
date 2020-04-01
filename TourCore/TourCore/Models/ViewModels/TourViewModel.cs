@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using TourCore.Models.Db;
@@ -21,6 +22,8 @@ namespace TourCore.Models.ViewModels
         public bool NewTour { get; set; }
         public decimal Discount { get; set; }
         public int NumberBooking { get; set; }
-      
+        public string Description { get; set; }
+        public int InTour { get; set; }
+        public int OutTour { get; set; }
     }
 }

@@ -29,10 +29,14 @@ namespace TourCore
             //services.AddControllersWithViews();
             services.AddMvc();
             string TourConn = Configuration.GetConnectionString("TourContext");
+            //
             services.AddDbContext<TourContext>(otps => otps.UseSqlServer(TourConn));
             services.AddScoped<MenuService>();
             services.AddScoped<TourService>();
             services.AddScoped<BookingService>();
+            //services.AddTransient <TourContext<>()
+            //services.AddSingleton<>
+
 
         }
 

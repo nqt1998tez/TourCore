@@ -28,7 +28,6 @@ namespace TourCore.Controllers
             if(ModelState.IsValid)
             {
                 this._bookingService.BookingTour(customer);
-
             }
             return View();
         }

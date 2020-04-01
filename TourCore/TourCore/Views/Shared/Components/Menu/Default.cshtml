@@ -1,9 +1,7 @@
-﻿@model IEnumerable<TourCore.Models.ViewModels.MenuViewModel>
-
-    <ul class="menu ml-auto mt-1">
-        <li class="active"><a href="#">Trang chủ</a></li>
-        @foreach (var item in Model)
-        {
-            <li class="active"><a href="@Url.Action("Index","Tour")">@item.Name</a></li>
-        }
-    </ul>
+﻿<ul class="menu ml-auto mt-1">
+    <li class="active"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+    <li class="active"><a href="@Url.Action("ShowInTour","Tour")">Tour Trong Nước</a></li>
+    <li class="active"><a href="@Url.Action("ShowOutTour","Tour")">Tour Nước Ngoài</a></li>
+    <li class="active"><a href="@Url.Action("ShowOutTour","Tour")">Đăng nhập</a></li>
+    <li class="active"><a href="@Url.Action("ShowOutTour","Tour")">Đăng kí</a></li>
+</ul>

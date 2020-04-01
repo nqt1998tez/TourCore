@@ -60,9 +60,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- //banner -->
     <!-- tour packages -->
     <section class="packages pt-5">
-        
-        @await Html.PartialAsync("ShowInTour",ViewData["ShowInTour"])
-        @*@await Component.InvokeAsync("Tour")*@
+        @*@await Html.PartialAsync("ShowInTour",ViewData["ShowInTour"])*@
+        @await Component.InvokeAsync("Tour")
     </section>
     <!-- tour packages -->
     <!-- destinations -->

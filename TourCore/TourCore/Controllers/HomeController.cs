@@ -20,8 +20,5 @@ namespace TourCore.Controllers
         {
             return View();
         }
-      
-
-       
     }
 }

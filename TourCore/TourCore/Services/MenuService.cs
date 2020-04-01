@@ -19,11 +19,17 @@ namespace TourCore.Services
         }  
         public  List<MenuViewModel> GetMenu()
         {
+            //var menu=_db.Menus.ToList();
+            //foreach (var item in menu)
+            //{
+            //    MenuViewModel menus = new MenuViewModel();
+            //    menus.Name = item.Name;
+            //}
             var menus = new List<MenuViewModel>();
             using (var conn = new SqlConnection(this._db.Database.GetDbConnection().ConnectionString))
             {
                 conn.Open();
-                menus = conn.Query<MenuViewModel>(@"select * from Menu").ToList();
+                menus = conn.Query<MenuViewModel>(@"select Name from Menu").ToList();
                 conn.Close();
             }
             return menus;

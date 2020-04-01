@@ -18,18 +18,19 @@ namespace TourCore.Controllers
             this._db = db;
             this._tourService = tourService;
         }
-     
-        public IActionResult Index()
+        public IActionResult ShowInTour()
         {
-            ViewData["ShowInTour"] = _tourService.ShowInTour();
+            return View();
+        }
+        public IActionResult ShowOutTour()
+        {
             return View();
         }
         public IActionResult TourDetail(int? id)
         {
             if(id==null)
             {
-                Response.StatusCode = 404;
-                return null;
+                return View("/Views/Shared/Error.cshtml");
             }
             var model = _tourService.TourDetail(id);
             if(model==null)

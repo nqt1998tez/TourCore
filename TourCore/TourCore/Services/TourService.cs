@@ -23,7 +23,7 @@ namespace TourCore.Services
             using (var conn = new SqlConnection(this._db.Database.GetDbConnection().ConnectionString))
             {
                 conn.Open();
-                showInTour = conn.Query<TourViewModel>(@"select * from Tour").ToList();
+                showInTour = conn.Query<TourViewModel>(@"select * from Tour where InTour=1").ToList();
                 conn.Close();
             }
             return showInTour;
@@ -46,13 +46,13 @@ namespace TourCore.Services
         public TourViewModel TourDetail(int? id)
         {
             var tourId = new List<TourViewModel>();
-            using (var conn=new SqlConnection(this._db.Database.GetDbConnection().ConnectionString))
+            using (var conn = new SqlConnection(this._db.Database.GetDbConnection().ConnectionString))
             {
                 conn.Open();
-                tourId = conn.Query<TourViewModel>("select * from Tour where Id="+id).ToList();
+                tourId = conn.Query<TourViewModel>("select * from Tour where Id=" + id).ToList();
                 conn.Close();
             }
-            return tourId.SingleOrDefault(n => n.Id==id);
+            return tourId.SingleOrDefault(n => n.Id == id);
         }
     }
 

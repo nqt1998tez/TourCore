@@ -8329,19 +8329,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Tan\\.nuget\\packages\\": {}
+    "C:\\Users\\dev1\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Tan\\source\\repos\\TourCore\\TourCore\\TourCore.csproj",
+      "projectUniqueName": "C:\\Users\\dev1\\source\\repos\\TourCore\\TourCore\\TourCore\\TourCore.csproj",
       "projectName": "TourCore",
-      "projectPath": "C:\\Users\\Tan\\source\\repos\\TourCore\\TourCore\\TourCore.csproj",
-      "packagesPath": "C:\\Users\\Tan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Tan\\source\\repos\\TourCore\\TourCore\\obj\\",
+      "projectPath": "C:\\Users\\dev1\\source\\repos\\TourCore\\TourCore\\TourCore\\TourCore.csproj",
+      "packagesPath": "C:\\Users\\dev1\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dev1\\source\\repos\\TourCore\\TourCore\\TourCore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Tan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dev1\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8404,7 +8404,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

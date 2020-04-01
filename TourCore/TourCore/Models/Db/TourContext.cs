@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using TourCore.Models.ViewModels;
 
 namespace TourCore.Models.Db
 {
@@ -20,6 +21,7 @@ namespace TourCore.Models.Db
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<ContractDetail> ContractDetails { get; set; }
         public DbSet<Staff> Staffs { get; set; }
+       
 
 
     }
