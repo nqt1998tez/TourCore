@@ -18,8 +18,9 @@ namespace TourCore.Controllers
             this._db = db;
             this._tourService = tourService;
         }
-        public IActionResult ShowInTour()
+        public IActionResult Index()
         {
+            ViewData["ShowInTour"] = this._tourService.ShowInTour();
             return View();
         }
         public IActionResult ShowOutTour()

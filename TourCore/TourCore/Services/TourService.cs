@@ -19,7 +19,21 @@ namespace TourCore.Services
         }
         public List<TourViewModel> ShowInTour()
         {
+            //var tours = _db.Tours.Where(n=>n.InTour==1).ToList();
             var showInTour = new List<TourViewModel>();
+            //foreach (var item in tours)
+            //{
+            //    TourViewModel tourView = new TourViewModel();
+            //    tourView.NameTour = item.NameTour;
+            //    tourView.Day = item.Day;
+            //    tourView.Night = item.Night;
+            //    tourView.Cost = item.Cost;
+            //    tourView.Code = item.Code;
+            //    tourView.Description = item.Description;
+            //    showInTour.Add(tourView);
+            //}
+
+            // --Use Dapper--
             using (var conn = new SqlConnection(this._db.Database.GetDbConnection().ConnectionString))
             {
                 conn.Open();

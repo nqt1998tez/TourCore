@@ -1,0 +1,28 @@
+﻿@using TourCore.Models.ViewModels;
+@model IEnumerable<ContractDetailViewModel>
+@{
+    ViewData["Title"] = "Travel";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h1>Các tour du lịch đã được đặt</h1>
+<br />
+<br />
+<table class="table">
+    <tr>
+        <td>Mã tour</td>
+        <td>Tên tour</td>
+        <td>Tên khách hàng</td>
+        <td>Ngày đặt tour</td>
+        <td>Tình trạng thanh toán</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Code</td>
+            <td>@item.NameTour</td>
+            <td>@item.NameCustomer</td>
+            <td>@item.BeginDate</td>
+            <td>@item.Paid</td>
+        </tr>
+    }
+</table>

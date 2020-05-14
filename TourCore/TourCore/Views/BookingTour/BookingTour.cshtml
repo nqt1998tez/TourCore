@@ -15,11 +15,13 @@
         @Html.TextBox("Address", "", new { @class = "form-control", @placeholder = "Address" })
     </div>
     <div class="col-sm-6 form-group contact-forms">
-        @Html.TextBox("PeopleGo", "", new { @class = "form-control", @placeholder = "PeopleGo" })
+        @Html.TextBox("PeopleGo","", new { @class = "form-control", @placeholder = "People Go" })
     </div>
     <div class="col-sm-6 form-group contact-forms">
         <input type="date" name="DOB" class="form-control" placeholder="Date" />
     </div>
+    <input type="hidden" name="TourId"  value="@Model.Id"/>
+    
     <div class="col-md-12 booking-button">
         <button type="submit" class="btn btn-block sent-butnn">Book Now</button>
     </div>

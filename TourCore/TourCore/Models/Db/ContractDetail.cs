@@ -12,14 +12,12 @@ namespace TourCore.Models.Db
     {
         [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        public int ContractId { get; set; }
         public int PeopleGo { get; set; }
-        public decimal Cost { get; set; }
-        public string Name { get; set; }
-        public int Quantity { get; set; }
-        [ForeignKey("Tour")]
+        public decimal? Cost { get; set; }
+        public string NameTour { get; set; }
         public int TourId { get; set; }
-        [ForeignKey("Staff")]
-        public int StaffId { get; set; }
+        public int? StaffId { get; set; }
 
     }
 }

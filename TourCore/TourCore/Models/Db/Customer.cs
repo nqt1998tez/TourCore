@@ -18,8 +18,10 @@ namespace TourCore.Models.Db
         public string Phone { get; set; }
         public string Email { get; set; }
         public DateTime DOB { get; set; }
-        //[ForeignKey("Member")]
-        //public int MembershipId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
+        public int? MembershipId { get; set; }
 
         public Customer(CustomerViewModel customer)
         {
@@ -29,6 +31,8 @@ namespace TourCore.Models.Db
             this.Email = customer.Email;
             this.DOB = customer.DOB;
             this.Phone = customer.Phone;
+            this.FirstName = customer.FirstName;
+            this.LastName = customer.LastName;
         }
         public Customer()
         { }

@@ -17,7 +17,6 @@ namespace TourCore.Models.Db
         public string GroupPhone { get; set; }
         public string Representative { get; set; }
         public int NumberJoin { get; set; }
-        [ForeignKey("Member")]
         public int MembershipId { get; set; }
 
     }

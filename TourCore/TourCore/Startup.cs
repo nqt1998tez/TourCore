@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TourCore.Middlewares;
 using TourCore.Models.Db;
 using TourCore.Services;
 
@@ -20,7 +23,6 @@ namespace TourCore
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -31,13 +33,12 @@ namespace TourCore
             string TourConn = Configuration.GetConnectionString("TourContext");
             //
             services.AddDbContext<TourContext>(otps => otps.UseSqlServer(TourConn));
-            services.AddScoped<MenuService>();
+            services.AddScoped<QuantitySevice>();
             services.AddScoped<TourService>();
             services.AddScoped<BookingService>();
-            //services.AddTransient <TourContext<>()
-            //services.AddSingleton<>
-
-
+            services.AddScoped<TravelService>();
+            services.AddScoped<MemberService>();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,11 +56,10 @@ namespace TourCore
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
-
             app.UseAuthorization();
-
+            //app.UseMiddleware<SecurityMiddleware>();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

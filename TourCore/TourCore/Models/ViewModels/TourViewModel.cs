@@ -11,7 +11,7 @@ namespace TourCore.Models.ViewModels
     {
         public int Id { get; set; }
         public string Code { get; set; }
-        public string Name { get; set; }
+        public string NameTour { get; set; }
         public DateTime BeginDate { get; set; }
         public DateTime EndDate { get; set; }
         public int Day { get; set; }

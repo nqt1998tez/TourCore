@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "AddStaff";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div>
+    <button class="btn btn-success" onclick="CreateStaff();">Thêm nhân viên</button>
+</div>
+<br />
+<br />
+<div class="showInput" style="display:none">
+    <div class="col-3">
+        <span>Tên nhân viên </span>
+    </div>
+    <div class="col-6">
+        <input type="text" name="Name"/>
+    </div>
+    <br />
+    <div>
+        <span>Địa chỉ</span>
+        <input type="text" name="Address"/>
+    </div>
+    <br />
+    <div>
+        <span>Ngày sinh</span>
+        <input type="date" name="DOB"/>
+    </div>
+    <br />
+    <div>
+        <span>Số điện thoại</span>
+        <input type="number" name="Phone"/>
+    </div>
+</div>
+<script>
+    function CreateStaff() {
+        $(".showInput").show();
+        //$(".showInput").hide();
+    }
+</script>

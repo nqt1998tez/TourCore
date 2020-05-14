@@ -16,12 +16,12 @@ namespace TourCore.Models.Db
         public DateTime BeginDate { get; set; }
         public bool Paid { get; set; }
         public string Content { get; set; }
-
-        public int MembershipId { get; set; }
+        public int TourId { get; set; }
+        public int? MembershipId { get; set; }
 
         public int CustomerId { get; set; }
 
-        public int GroupId { get; set; }
+        public int? GroupId { get; set; }
 
         //public Group Group { get; set; }
         //public void Test()
@@ -44,6 +44,11 @@ namespace TourCore.Models.Db
             this.Paid = contract.Paid;
             this.Content = contract.Content;
             this.CustomerId = contract.CustomerId;
+            this.TourId = contract.TourId;
+        }
+        public Contract()
+        {
+
         }
     }
 }

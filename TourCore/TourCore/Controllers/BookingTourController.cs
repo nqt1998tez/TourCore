@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TourCore.Models.Commands;
 using TourCore.Models.Db;
 using TourCore.Models.ViewModels;
 using TourCore.Services;
@@ -11,25 +12,27 @@ namespace TourCore.Controllers
 {
     public class BookingTourController : Controller
     {
-        private readonly TourContext _db;
         private readonly BookingService _bookingService;
-        public BookingTourController(TourContext db,BookingService bookingService)
+        private readonly TourService _tourService;
+       
+        public BookingTourController(TourService tourService, BookingService bookingService)
         {
-            this._db = db;
             this._bookingService = bookingService;
+            this._tourService = tourService;
         }
         public IActionResult Index()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult BookingTour(CustomerViewModel customer)
+        public IActionResult BookingTour(BookingTourCommand command)
         {
             if(ModelState.IsValid)
             {
-                this._bookingService.BookingTour(customer);
+                this._bookingService.BookingTour(command);
             }
-            return View();
+            var model = _tourService.TourDetail(command.TourId);           
+            return View("/Views/Home/Index.cshtml",model);
         }
     }
 }

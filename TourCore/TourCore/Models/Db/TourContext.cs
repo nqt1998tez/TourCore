@@ -21,7 +21,9 @@ namespace TourCore.Models.Db
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<ContractDetail> ContractDetails { get; set; }
         public DbSet<Staff> Staffs { get; set; }
-       
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Member> Members { get; set; }
+
 
 
     }

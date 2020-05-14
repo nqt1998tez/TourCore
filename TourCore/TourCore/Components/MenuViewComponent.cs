@@ -1,26 +1,30 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TourCore.Models.Db;
-using TourCore.Models.ViewModels;
 using TourCore.Services;
 
 namespace TourCore.Components
 {
-    public class MenuViewComponent: ViewComponent
+    public class MenuViewComponent : ViewComponent
     {
-        private readonly MenuService _menuService;
-        public MenuViewComponent(TourContext db,MenuService menuService)
+        private readonly MemberService _memberService;
+        public MenuViewComponent(MemberService memberService)
         {
-            this._menuService = menuService;
+            this._memberService = memberService;
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View(_menuService.GetMenu().ToList());
+            var session = HttpContext.Session;
+            ViewData["Session"] = session.GetString("Username");
+            ViewBag.Session = ViewData["Session"];
+            return View();
         }
-
+        public bool Login(string Username, string Password)
+        {
+            return this._memberService.LoginMember(Username, Password);
+        }
     }
 }
