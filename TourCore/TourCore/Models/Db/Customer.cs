@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using TourCore.Models.Commands;
 using TourCore.Models.ViewModels;
 
 namespace TourCore.Models.Db
@@ -18,11 +19,18 @@ namespace TourCore.Models.Db
         public string Phone { get; set; }
         public string Email { get; set; }
         public DateTime DOB { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
 
         public int? MembershipId { get; set; }
 
+        public Customer(BookingTourCommand command)
+        {
+            this.Name = command.Name;
+            this.Address = command.Address;
+            this.Phone = command.Phone;
+            this.Email = command.Email;
+            this.DOB = command.DOB;
+
+        }
         public Customer(CustomerViewModel customer)
         {
             this.Id = customer.Id;
@@ -31,10 +39,9 @@ namespace TourCore.Models.Db
             this.Email = customer.Email;
             this.DOB = customer.DOB;
             this.Phone = customer.Phone;
-            this.FirstName = customer.FirstName;
-            this.LastName = customer.LastName;
         }
         public Customer()
         { }
+
     }
 }

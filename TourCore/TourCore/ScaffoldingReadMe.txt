@@ -1,12 +1,28 @@
-﻿Scaffolding has generated all the files and added the required dependencies.
-
-However the Application's Startup code may required additional changes for things to work end to end.
-Add the following code to the Configure method in your Application's Startup class if not already done:
-
-        app.UseMvc(routes =>
+﻿  public ActionResult TaoMoi(SanPham sp, HttpPostedFileBase[] HinhAnh)
         {
-          routes.MapRoute(
-            name : "areas",
-            template : "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-          );
-        });
+            ViewBag.MaNCC = new SelectList(db.NhaCungCaps.OrderBy(n => n.TenNCC), "MaNCC", "TenNCC");
+            ViewBag.MaLoai = new SelectList(db.LoaiSanPhams.OrderBy(n => n.TenLoai), "MaLoai", "TenLoai");
+            ViewBag.MaNSX = new SelectList(db.NhaSanXuats.OrderBy(n => n.TenNSX), "MaNSX", "TenNSX");
+
+            if (HinhAnh[0].ContentLength > 0)
+            {
+                //Lấy tên hình ảnh
+                var filename = Path.GetFileName(HinhAnh[0].FileName);
+                //Lấy hình ảnh chuyển vào thư mục hình ảnh
+                var path = Path.Combine(Server.MapPath("~/Content/ProductImages"), filename);
+                //Nếu thư mục chứa hình ảnh đó rồi thì xuất ra thông báo
+                if (System.IO.File.Exists(path))
+                {
+                    ViewBag.HinhAnh = "Hình đã tồn tài";
+                    return View();
+                }
+                else
+                {
+                    HinhAnh[0].SaveAs(path);
+                    sp.HinhAnh = HinhAnh[0].FileName;
+                }
+            }
+            db.SanPhams.Add(sp);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }

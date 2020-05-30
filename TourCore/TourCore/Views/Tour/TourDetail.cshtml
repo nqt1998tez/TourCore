@@ -14,7 +14,7 @@
 
                 <div class="image-tour position-relative">
                     <img src="@Url.Content("/images/tour_images/"+Model.Picture)" alt="" class="img-fluid" style="width:412px;height:206px"/>
-                    <p><span class="fa fa-tags"></span> <span>@Model.Cost.ToString("#,##")VNĐ</span></p>
+                    <p><span class="fa fa-tags"></span> <span>@Model.Cost?.ToString("#,##")VNĐ</span></p>
                 </div>
 
                 <h4>@Model.NameTour</h4>

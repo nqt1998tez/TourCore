@@ -37,7 +37,7 @@ namespace TourCore.Services
             using (var conn = new SqlConnection(this._db.Database.GetDbConnection().ConnectionString))
             {
                 conn.Open();
-                showInTour = conn.Query<TourViewModel>(@"select * from Tour where InTour=1").ToList();
+                showInTour = conn.Query<TourViewModel>(@"select * from Tour where InTour=0").ToList();
                 conn.Close();
             }
             return showInTour;

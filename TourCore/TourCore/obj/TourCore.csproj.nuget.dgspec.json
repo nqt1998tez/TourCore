@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dev1\\source\\repos\\TourCore\\TourCore\\TourCore\\TourCore.csproj": {}
+    "C:\\Users\\Tan\\source\\repos\\TourCore\\TourCore\\TourCore\\TourCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dev1\\source\\repos\\TourCore\\TourCore\\TourCore\\TourCore.csproj": {
+    "C:\\Users\\Tan\\source\\repos\\TourCore\\TourCore\\TourCore\\TourCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dev1\\source\\repos\\TourCore\\TourCore\\TourCore\\TourCore.csproj",
+        "projectUniqueName": "C:\\Users\\Tan\\source\\repos\\TourCore\\TourCore\\TourCore\\TourCore.csproj",
         "projectName": "TourCore",
-        "projectPath": "C:\\Users\\dev1\\source\\repos\\TourCore\\TourCore\\TourCore\\TourCore.csproj",
-        "packagesPath": "C:\\Users\\dev1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dev1\\source\\repos\\TourCore\\TourCore\\TourCore\\obj\\",
+        "projectPath": "C:\\Users\\Tan\\source\\repos\\TourCore\\TourCore\\TourCore\\TourCore.csproj",
+        "packagesPath": "C:\\Users\\Tan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tan\\source\\repos\\TourCore\\TourCore\\TourCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\dev1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Tan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -52,11 +52,19 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.2, )"
+              "version": "[3.1.3, )"
+            },
+            "PagedList.Core": {
+              "target": "Package",
+              "version": "[1.17.4, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.1, )"
+            },
+            "X.PagedList.Mvc.Core": {
+              "target": "Package",
+              "version": "[8.0.7, )"
             }
           },
           "imports": [
@@ -77,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

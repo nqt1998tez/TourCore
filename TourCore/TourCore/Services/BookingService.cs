@@ -1,9 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
 using TourCore.Models.Commands;
 using TourCore.Models.Db;
 using TourCore.Models.ViewModels;
@@ -14,20 +10,14 @@ namespace TourCore.Services
     {
         private readonly TourContext _db;
         private readonly TourService _tourService;
-        public BookingService(TourContext db,TourService tourService)
+        public BookingService(TourContext db, TourService tourService)
         {
             this._db = db;
             this._tourService = tourService;
         }
         public void BookingTour(BookingTourCommand command)
         {
-            var newCustomer = new Customer();
-            {
-                newCustomer.Name = command.Name;
-                newCustomer.Phone = command.Phone;
-                newCustomer.Address = command.Address;
-                newCustomer.Email = command.Email;
-            }
+            var newCustomer = new Customer(command);
             _db.Customers.Add(newCustomer);
             _db.SaveChanges();
 
@@ -44,7 +34,11 @@ namespace TourCore.Services
             _db.Contracts.Add(newContract);
             _db.SaveChanges();
 
-            var tour=_db.Tours.FirstOrDefault(n => n.Id == command.TourId);
+            var tour = _db.Tours.FirstOrDefault(n => n.Id == command.TourId);
+            {
+                tour.Quantity = tour.Quantity-command.PeopleGo;
+            }
+            _db.SaveChanges();
             //Insert ContractDetail
             ContractDetailViewModel contractDetail = new ContractDetailViewModel();
             {
@@ -64,7 +58,6 @@ namespace TourCore.Services
             }
             _db.ContractDetails.Add(newContractDetail);
             _db.SaveChanges();
-           
         }
     }
 }

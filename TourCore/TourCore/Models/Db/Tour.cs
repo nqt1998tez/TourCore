@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using TourCore.Models.Commands;
 using TourCore.Models.ViewModels;
 
 namespace TourCore.Models.Db
@@ -26,6 +27,9 @@ namespace TourCore.Models.Db
         public int? OutTour { get; set; }
         public int? Quantity { get; set; }
         public string Description { get; set; }
+
+
+       
         public Tour(TourViewModel tourViewModel)
         {
             this.Id = tourViewModel.Id;
@@ -38,6 +42,7 @@ namespace TourCore.Models.Db
             this.TopHot = tourViewModel.TopHot;
             this.NewTour = tourViewModel.NewTour;
             this.Discount = tourViewModel.Discount;
+            this.Description = tourViewModel.Description;
         }
         public Tour()
         {

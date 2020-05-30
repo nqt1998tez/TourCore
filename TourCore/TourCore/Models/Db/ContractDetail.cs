@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using TourCore.Models.ViewModels;
 
 namespace TourCore.Models.Db
 {
@@ -19,5 +20,19 @@ namespace TourCore.Models.Db
         public int TourId { get; set; }
         public int? StaffId { get; set; }
 
+        public ContractDetail(ContractDetailViewModel contractDetail)
+        {
+            this.Id = contractDetail.Id;
+            this.ContractId = contractDetail.Id;
+            this.PeopleGo = contractDetail.PeopleGo;
+            this.Cost = contractDetail.Cost;
+            this.NameTour = contractDetail.NameTour;
+            this.TourId = contractDetail.TourId;
+            this.StaffId = contractDetail.StaffId;
+        }
+        public ContractDetail()
+        {
+
+        }
     }
 }

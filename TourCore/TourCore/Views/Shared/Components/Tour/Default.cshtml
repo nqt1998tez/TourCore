@@ -9,7 +9,7 @@
                 <div class="image-tour position-relative">
                     <a href="@Url.Action("TourDetail","Tour",new {@id=item.Id})">
                         <img src="@Url.Content("/images/tour_images/"+item.Picture)" alt="" class="img-fluid">
-                        <p><span class="fa fa-tags"></span> <span>@item.Cost.ToString("#,##")</span></p>
+                        <p><span class="fa fa-tags"></span> <span>@item.Cost?.ToString("#,##")</span></p>
                     </a>
                 </div>
                 <div class="package-info">
