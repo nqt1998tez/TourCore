@@ -1,7 +1,7 @@
 ﻿@using X.PagedList.Mvc.Core;
 @using X.PagedList;
 @*@using X.PagedList.Web.Common;*@
-@model IPagedList<TourCore.Models.ViewModels.TourViewModel> 
+@model IPagedList<TourCore.Models.ViewModels.TourViewModel>
 
 @{
     ViewData["Title"] = "ShowAllTour";
@@ -45,7 +45,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                <input type="hidden" name="@item.Id"/>
+                <input type="hidden" name="@item.Id" />
                 <td>
                     @Html.DisplayFor(modelItem => item.Code)
                 </td>
@@ -70,14 +70,14 @@
                 </td>
 
                 <td>
-                    @Html.ActionLink("Sửa", "EditTour","Admin", new {  id=item.Id  }) |
+                    @Html.ActionLink("Sửa", "EditTour", "Admin", new { id = item.Id }) |
                     @Html.ActionLink("Chi tiết", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Xóa", "DeleteTour","Admin", new {  id=item.Id  })
+                    @Html.ActionLink("Xóa", "DeleteTour", "Admin", new { id = item.Id })
                 </td>
             </tr>
         }
     </tbody>
 </table>
 <br />
-Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
-@Html.PagedListPager(Model,page=>Url.Action("ShowAllTour",new {page }))
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("ShowAllTour", new { page }))
