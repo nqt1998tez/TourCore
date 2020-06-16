@@ -18,9 +18,10 @@ namespace TourCore.Models.Commands
         public bool? TopHot { get; set; }
         public bool? NewTour { get; set; }
         public decimal? Discount { get; set; }
-        public int CheckNational { get; set; }
+        public bool CheckNational { get; set; }
         public int Check { get; set; }
         public int? Quantity { get; set; }
         public string Description { get; set; }
+        public string Title { get; set; }
     }
 }

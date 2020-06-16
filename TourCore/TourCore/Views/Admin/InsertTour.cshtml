@@ -52,10 +52,9 @@
             <div class="form-group">
                 <label class="control-label">Trong nước hay nước ngoài</label>
                 <select class="form-control" name="CheckNational">
-                    <option value="0">Tour Trong Nước</option>
-                    <option value="1">Tour Nước Ngoài</option>
+                    <option value="true">Tour Trong Nước</option>
+                    <option value="false">Tour Nước Ngoài</option>
                 </select>
-                <span asp-validation-for="OutTour" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Quantity" class="control-label">Số lượng</label>
@@ -68,16 +67,13 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Description" class="control-label">Title</label>
+                <input name="Title" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Thêm tour mới" class="btn btn-primary" />
             </div>
         }
     </div>
 </div>
-
-@*<script type="text/javascript">
-    // Add the following code if you want the name of the file appear on select
-    $(".input-file").on("change", function () {
-        var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".input-file").html(fileName);
-    });
-</script>*@

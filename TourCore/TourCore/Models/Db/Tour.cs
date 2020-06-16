@@ -23,13 +23,14 @@ namespace TourCore.Models.Db
         public bool? TopHot { get; set; }
         public bool? NewTour { get; set; }
         public decimal? Discount { get; set; }
-        public int? InTour { get; set; }
-        public int? OutTour { get; set; }
+        public bool? Domestic { get; set; }
+        public bool? National { get; set; }
         public int? Quantity { get; set; }
         public string Description { get; set; }
+        public string Title { get; set; }
 
 
-       
+
         public Tour(TourViewModel tourViewModel)
         {
             this.Id = tourViewModel.Id;
@@ -43,6 +44,7 @@ namespace TourCore.Models.Db
             this.NewTour = tourViewModel.NewTour;
             this.Discount = tourViewModel.Discount;
             this.Description = tourViewModel.Description;
+            this.Title = tourViewModel.Title;
         }
         public Tour()
         {

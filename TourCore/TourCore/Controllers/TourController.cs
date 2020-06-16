@@ -18,14 +18,15 @@ namespace TourCore.Controllers
             this._db = db;
             this._tourService = tourService;
         }
-        public IActionResult Index()
+        public IActionResult Domestic()
         {
-            ViewData["ShowInTour"] = this._tourService.ShowInTour();
-            return View();
+            var model = this._tourService.Domestic();
+            return View(model);
         }
-        public IActionResult ShowOutTour()
+        public IActionResult National()
         {
-            return View();
+            var model = this._tourService.National();
+            return View(model);
         }
         public IActionResult TourDetail(int? id)
         {
@@ -38,6 +39,12 @@ namespace TourCore.Controllers
             {
                 return null;
             }
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult FindTour(string nameTour/*,DateTime beginDate*/)
+        {
+            var model= this._tourService.FindTour(nameTour);
             return View(model);
         }
     }

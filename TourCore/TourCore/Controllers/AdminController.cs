@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TourCore.Models.Commands;
 using TourCore.Models.Db;
+using TourCore.Models.ViewModels;
 using TourCore.Services;
 using X.PagedList;
 namespace TourCore.Controllers
@@ -17,11 +18,13 @@ namespace TourCore.Controllers
         private readonly QuantitySevice _quantitySevice;
         private readonly TravelService _travelService;
         private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly StaffService _staffService;
         private readonly TourContext _db;
         public AdminController(QuantitySevice quantitySevice, TravelService travelService,
-                              IHostingEnvironment hostingEnvironment, TourContext db)
+                              IHostingEnvironment hostingEnvironment, TourContext db,
+                              StaffService staffService)
         {
-
+            this._staffService = staffService;
             this._hostingEnvironment = hostingEnvironment;
             this._quantitySevice = quantitySevice;
             this._travelService = travelService;
@@ -42,9 +45,25 @@ namespace TourCore.Controllers
             ViewBag.Info = string.Empty;
             return View(model);
         }
+        [HttpGet]
         public IActionResult AddStaff()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult AddStaff(StaffCommand staffCommand)
+        {
+            if(ModelState.IsValid)
+            {
+                this._staffService.AddStaff(staffCommand);
+                return RedirectToAction("AllStaff","Admin");
+            }
+            return View();
+        }
+        public IActionResult AllStaff()
+        {
+            var model = this._staffService.AllStaff();
+            return View(model);
         }
         [HttpGet]
         public IActionResult InsertTour()
@@ -55,7 +74,7 @@ namespace TourCore.Controllers
         public IActionResult InsertTour(InsertTourCommand tourCommand)
         {
             string getNamePicture = null;
-            if(tourCommand.Picture!=null)
+            if(tourCommand!=null)
             {
                 getNamePicture = Path.GetFileName(tourCommand.Picture.FileName);
                 var uploadFolder = Path.Combine(this._hostingEnvironment.WebRootPath,"images/tour_images");
@@ -75,23 +94,26 @@ namespace TourCore.Controllers
                         newTour.Code = tourCommand.Code;
                         newTour.Day = tourCommand.Day;
                         newTour.Night = tourCommand.Night;
-                        if (tourCommand.CheckNational == 1)
+                        if (tourCommand.CheckNational == true)
                         {
-                            newTour.OutTour = 1;
+                            newTour.Domestic = true;
+                            newTour.National = false;
                         }
                         else
                         {
-                            newTour.InTour = tourCommand.CheckNational;
+                            newTour.Domestic = false;
+                            newTour.National = true;
                         }
                         newTour.Description = tourCommand.Description;
                         newTour.Cost = tourCommand.Cost;
                         newTour.Discount = tourCommand.Discount;
                         newTour.Quantity = tourCommand.Quantity;
                         newTour.Picture = getNamePicture;
+                        newTour.Title = tourCommand.Title;
                     }
                     _db.Tours.Add(newTour);
                     _db.SaveChanges();
-                    RedirectToAction("Index");
+                    RedirectToAction("Index","Admin");
                 }
             }
             return View();
@@ -100,7 +122,7 @@ namespace TourCore.Controllers
         {
             if (page == null) page=1;
             var allTour = this._travelService.ShowAllTour();
-            allTour.OrderBy(x=>x.Id);
+            allTour.OrderByDescending(x=>x.Id);
             int pageSize = 3;
             int pageNumber = (page ?? 1);
             return View(allTour.ToPagedList(pageNumber,pageSize));
@@ -122,5 +144,6 @@ namespace TourCore.Controllers
             this._travelService.DeleteTour(command);
             return RedirectToAction("ShowAllTour","Admin");
         }
+      
     }
 }

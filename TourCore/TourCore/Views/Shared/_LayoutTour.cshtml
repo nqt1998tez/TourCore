@@ -60,7 +60,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- //banner -->
     <!-- tour packages -->
     <section class="packages pt-5">
-        @await Html.PartialAsync("/Views/Tour/ShowInTourPartial.cshtml",ViewData["ShowInTour"])
+        @RenderBody()
     </section>
     <!-- tour packages -->
     <!-- destinations -->
@@ -158,7 +158,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </section>
     <!-- destinations -->
     <!--footer -->
-    @RenderBody()
     <footer>
         <section class="footer footer_w3layouts_section_1its py-5">
             <div class="container py-lg-4 py-3">

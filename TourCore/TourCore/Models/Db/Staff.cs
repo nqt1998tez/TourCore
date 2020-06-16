@@ -16,7 +16,7 @@ namespace TourCore.Models.Db
         public string Address { get; set; }
         public DateTime DOB { get; set; }
         public string Phone { get; set; }
-        public int Gender { get; set; }
+        public bool Gender { get; set; }
 
     }
 }

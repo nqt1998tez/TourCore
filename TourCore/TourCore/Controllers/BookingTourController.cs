@@ -34,5 +34,18 @@ namespace TourCore.Controllers
             var model = _tourService.TourDetail(command.TourId);           
             return View("/Views/Home/Index.cshtml",model);
         }
+        //public decimal TotalPeopleGo(BookingTourCommand command)
+        //{
+        //    decimal totalMoney = command.PeopleGo * 20000;
+        //    return totalMoney;
+        //}
+        //public IActionResult a(BookingTourCommand command)
+        //{
+        //    return new PartialViewResult()
+        //    {
+        //        ViewData = TotalPeopleGo(command);
+
+        //    };
+        //}
     }
 }

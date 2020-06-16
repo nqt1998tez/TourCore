@@ -31,13 +31,16 @@ namespace TourCore
             //services.AddControllersWithViews();
             services.AddMvc();
             string TourConn = Configuration.GetConnectionString("TourContext");
+
             //
+            services.AddAntiforgery(o=>o.HeaderName ="XSRF-TOKEN");
             services.AddDbContext<TourContext>(otps => otps.UseSqlServer(TourConn));
             services.AddScoped<QuantitySevice>();
             services.AddScoped<TourService>();
             services.AddScoped<BookingService>();
             services.AddScoped<TravelService>();
             services.AddScoped<MemberService>();
+            services.AddScoped<StaffService>();
             services.AddSession();
         }
 

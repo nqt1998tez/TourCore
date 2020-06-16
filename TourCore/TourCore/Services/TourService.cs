@@ -17,10 +17,10 @@ namespace TourCore.Services
         {
             this._db = db;
         }
-        public List<TourViewModel> ShowInTour()
+        public List<TourViewModel> Domestic()
         {
             //var tours = _db.Tours.Where(n=>n.InTour==1).ToList();
-            var showInTour = new List<TourViewModel>();
+            var domestics = new List<TourViewModel>();
             //foreach (var item in tours)
             //{
             //    TourViewModel tourView = new TourViewModel();
@@ -37,10 +37,21 @@ namespace TourCore.Services
             using (var conn = new SqlConnection(this._db.Database.GetDbConnection().ConnectionString))
             {
                 conn.Open();
-                showInTour = conn.Query<TourViewModel>(@"select * from Tour where InTour=0").ToList();
+                domestics = conn.Query<TourViewModel>(@"select * from Tour where Domestic=1").ToList();
                 conn.Close();
             }
-            return showInTour;
+            return domestics;
+        }
+        public List<TourViewModel> National()
+        {
+            var nationals = new List<TourViewModel>();
+            using (var connection = new SqlConnection(this._db.Database.GetDbConnection().ConnectionString))
+            {
+                connection.Open();
+                nationals = connection.Query<TourViewModel>(@"select * from Tour where [National]=1").ToList();
+                connection.Close();
+            }
+            return nationals;
         }
         //public List<TourViewModel> TourDetail(int? id)
         //{
@@ -67,6 +78,17 @@ namespace TourCore.Services
                 conn.Close();
             }
             return tourId.SingleOrDefault(n => n.Id == id);
+        }
+        public List<TourViewModel> FindTour(string nameTour/*,DateTime beginDate*/)
+        {
+            var findTour = new List<TourViewModel>();
+            using (var connection = new SqlConnection(this._db.Database.GetDbConnection().ConnectionString))
+            {
+                connection.Open();
+                findTour = connection.Query<TourViewModel>(@"select * from Tour").Where(n=>n.NameTour.Contains(nameTour)).ToList();
+                connection.Close();
+            }
+            return findTour;
         }
     }
 

@@ -28,9 +28,10 @@ namespace TourCore.Models.ViewModels
         public decimal? Discount { get; set; }
         public int NumberBooking { get; set; }
         public string Description { get; set; }
-        public int InTour { get; set; }
-        public int OutTour { get; set; }
+        public bool Domestic { get; set; }
+        public bool National { get; set; }
         [DisplayName("Số lượng")]
         public int? Quantity { get; set; }
+        public string Title { get; set; }
     }
 }

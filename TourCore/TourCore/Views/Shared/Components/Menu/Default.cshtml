@@ -4,8 +4,8 @@
 }
 <ul class="menu ml-auto mt-1">
     <li class="active"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
-    <li class="active"><a href="@Url.Action("Index","Tour")">Tour Trong Nước</a></li>
-    <li class="active"><a href="@Url.Action("ShowOutTour","Tour")">Tour Nước Ngoài</a></li>
+    <li class="active"><a href="@Url.Action("Domestic","Tour")">Tour Trong Nước</a></li>
+    <li class="active"><a href="@Url.Action("National","Tour")">Tour Nước Ngoài</a></li>
     @if (ViewBag.Session != null)
     {
         <li class="active"><a>Chào @member</a></li>
