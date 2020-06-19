@@ -32,7 +32,15 @@ namespace TourCore.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            if(HttpContext.Session.GetString("Admin")==null)
+            {
+                return RedirectToAction("Login","Admin");
+            }
+            else
+            {
+                HttpContext.Session.Clear();
+                return View();
+            }
         }
         public IActionResult QuantityMember()
         {
@@ -143,6 +151,25 @@ namespace TourCore.Controllers
         {
             this._travelService.DeleteTour(command);
             return RedirectToAction("ShowAllTour","Admin");
+        }
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login(IFormCollection form)
+        {
+            string strUsername = form["username"].ToString();
+            string strPassword = form["password"].ToString();
+            var check = _db.Members.Count(n=>n.Username==strUsername && n.Password==strPassword);
+            if(check > 0)
+            {
+                HttpContext.Session.SetString("Admin",strUsername);
+                return RedirectToAction("Index","Admin");
+            }
+            ViewBag.Error= "Đăng nhập không thành công";
+            return View();
         }
       
     }

@@ -478,3 +478,4 @@ C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\Raz
 C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\AllStaff.cshtml.g.cs
 C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\Razor\Views\Tour\FindTourPartial.cshtml.g.cs
 C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\Razor\Views\Tour\FindTour.cshtml.g.cs
+C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Login.cshtml.g.cs
