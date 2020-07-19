@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit;
 using TourCore.Models.Commands;
 using TourCore.Models.Db;
 using TourCore.Models.ViewModels;
 using TourCore.Services;
 using X.PagedList;
+using MailKit.Net.Smtp;
 namespace TourCore.Controllers
 {
     public class AdminController : Controller
@@ -32,13 +34,22 @@ namespace TourCore.Controllers
         }
         public IActionResult Index()
         {
-            if(HttpContext.Session.GetString("Admin")==null)
+            if (HttpContext.Session.GetString("Admin") == null)
             {
-                return RedirectToAction("Login","Admin");
+                return RedirectToAction("Login", "Admin");
             }
             else
             {
-                HttpContext.Session.Clear();
+                var name = from m in _db.Manages
+                           where m.Id == 1
+                           select new { m.Name };
+                string myAdmin = null;
+                foreach (var item in name)
+                {
+                    myAdmin = item.Name;
+                }
+                ViewBag.name = myAdmin;
+                HttpContext.Session.Remove("Admin");
                 return View();
             }
         }
@@ -61,10 +72,10 @@ namespace TourCore.Controllers
         [HttpPost]
         public IActionResult AddStaff(StaffCommand staffCommand)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 this._staffService.AddStaff(staffCommand);
-                return RedirectToAction("AllStaff","Admin");
+                return RedirectToAction("AllStaff", "Admin");
             }
             return View();
         }
@@ -82,11 +93,11 @@ namespace TourCore.Controllers
         public IActionResult InsertTour(InsertTourCommand tourCommand)
         {
             string getNamePicture = null;
-            if(tourCommand!=null)
+            if (tourCommand != null)
             {
                 getNamePicture = Path.GetFileName(tourCommand.Picture.FileName);
-                var uploadFolder = Path.Combine(this._hostingEnvironment.WebRootPath,"images/tour_images");
-                var getPictureToFolder = Path.Combine(uploadFolder,getNamePicture);
+                var uploadFolder = Path.Combine(this._hostingEnvironment.WebRootPath, "images/tour_images");
+                var getPictureToFolder = Path.Combine(uploadFolder, getNamePicture);
                 if (System.IO.File.Exists(getPictureToFolder))
                 {
                     ViewBag.Picture = "Hình ảnh đã tồn tại";
@@ -121,19 +132,19 @@ namespace TourCore.Controllers
                     }
                     _db.Tours.Add(newTour);
                     _db.SaveChanges();
-                    RedirectToAction("Index","Admin");
+                    RedirectToAction("Index", "Admin");
                 }
             }
             return View();
         }
         public IActionResult ShowAllTour(int? page)
         {
-            if (page == null) page=1;
+            if (page == null) page = 1;
             var allTour = this._travelService.ShowAllTour();
-            allTour.OrderByDescending(x=>x.Id);
+            allTour.OrderByDescending(x => x.Id);
             int pageSize = 3;
             int pageNumber = (page ?? 1);
-            return View(allTour.ToPagedList(pageNumber,pageSize));
+            return View(allTour.ToPagedList(pageNumber, pageSize));
         }
         [HttpGet]
         public IActionResult EditTour(int id)
@@ -150,7 +161,7 @@ namespace TourCore.Controllers
         public IActionResult DeleteTour(InsertTourCommand command)
         {
             this._travelService.DeleteTour(command);
-            return RedirectToAction("ShowAllTour","Admin");
+            return RedirectToAction("ShowAllTour", "Admin");
         }
         [HttpGet]
         public IActionResult Login()
@@ -162,15 +173,67 @@ namespace TourCore.Controllers
         {
             string strUsername = form["username"].ToString();
             string strPassword = form["password"].ToString();
-            var check = _db.Members.Count(n=>n.Username==strUsername && n.Password==strPassword);
-            if(check > 0)
+            var check = _db.Manages.Count(n => n.Username == strUsername && n.Password == strPassword && n.Status == true);
+            if (check > 0)
             {
-                HttpContext.Session.SetString("Admin",strUsername);
-                return RedirectToAction("Index","Admin");
+                HttpContext.Session.SetString("Admin", strUsername);
+
+                return RedirectToAction("Index", "Admin");
             }
-            ViewBag.Error= "Đăng nhập không thành công";
+            ViewBag.Error = "Đăng nhập không thành công";
             return View();
         }
-      
+        public IActionResult SeeContractDetail(int? id)
+        {
+            var model = this._travelService.SeeContractDeTail(id);
+            return View(model);
+        }
+        public IActionResult DeleteContractDetail(int? id)
+        {
+            this._travelService.DeleteContractDetail(id);
+            return RedirectToAction("Travel", "Admin");
+        }
+        [HttpPost]
+        public IActionResult SendMail(Email email)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("TourCore", "TourCoresystem@gmail.com"));
+            message.To.Add(new MailboxAddress("Thông báo!!!", email.ToMail));
+            message.Subject = "Thông báo!!!";
+            message.Body = new TextPart("plain")
+            {
+                Text="Bạn đã đặt Tour thành công"
+            };
+            using (var client = new SmtpClient())
+            {
+                client.Connect("smtp.gmail.com",587,false);
+                client.Authenticate("TourCoresystem@gmail.com","quoctan123");
+                client.Send(message);
+                client.Disconnect(true);
+                client.Dispose();
+            }
+            return RedirectToAction("ReportMail", "Admin");
+        }
+        public IActionResult ReportMail()
+        {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult EditContractDetail(int? id)
+        {
+            var model = this._travelService.EditContractDetail(id);
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult EditContractDetail(ContractDetailViewModel viewModel)
+        {
+            this._travelService.EditContractDetail(viewModel);
+            return RedirectToAction("Travel","Admin");
+        }
+        public IActionResult Payment()
+        {
+            var model = this._travelService.Paid();
+            return View(model);
+        }
     }
 }

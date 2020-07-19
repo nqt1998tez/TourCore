@@ -44,6 +44,10 @@ namespace TourCore.Controllers
         [HttpPost]
         public IActionResult FindTour(string nameTour/*,DateTime beginDate*/)
         {
+            if(nameTour==null)
+            {
+                return RedirectToAction("Domestic","Tour");
+            }
             var model= this._tourService.FindTour(nameTour);
             return View(model);
         }

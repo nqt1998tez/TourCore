@@ -30,9 +30,10 @@ namespace TourCore.Controllers
             if(ModelState.IsValid)
             {
                 this._bookingService.BookingTour(command);
+                return RedirectToAction("Index","Home");
             }
             var model = _tourService.TourDetail(command.TourId);           
-            return View("/Views/Home/Index.cshtml",model);
+            return View("/Views/Tour/TourDetail.cshtml",model);
         }
         //public decimal TotalPeopleGo(BookingTourCommand command)
         //{
@@ -44,7 +45,6 @@ namespace TourCore.Controllers
         //    return new PartialViewResult()
         //    {
         //        ViewData = TotalPeopleGo(command);
-
         //    };
         //}
     }

@@ -23,6 +23,7 @@ namespace TourCore.Models.Db
         public DbSet<Staff> Staffs { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Member> Members { get; set; }
+        public DbSet<Manage> Manages { get; set; }
 
 
 

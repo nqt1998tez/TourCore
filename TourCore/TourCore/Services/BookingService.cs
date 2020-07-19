@@ -3,6 +3,7 @@ using System.Linq;
 using TourCore.Models.Commands;
 using TourCore.Models.Db;
 using TourCore.Models.ViewModels;
+using System.Net.Mail;
 
 namespace TourCore.Services
 {
@@ -20,23 +21,21 @@ namespace TourCore.Services
             var newCustomer = new Customer(command);
             _db.Customers.Add(newCustomer);
             _db.SaveChanges();
-
             //Insert Contract
             ContractViewModel contract = new ContractViewModel();
             {
                 contract.CustomerId = newCustomer.Id;
                 contract.TourId = command.TourId;
-                contract.BeginDate = DateTime.Now;
+                contract.BeginDate = command.BeginDate;
                 contract.Paid = false;
-                contract.Content = "abc";
+                contract.Content = command.Content;
             }
             var newContract = new Contract(contract);
             _db.Contracts.Add(newContract);
             _db.SaveChanges();
-
             var tour = _db.Tours.FirstOrDefault(n => n.Id == command.TourId);
             {
-                tour.Quantity = tour.Quantity-command.PeopleGo;
+                tour.Quantity = tour.Quantity - Convert.ToInt32(command.PeopleGo);
             }
             _db.SaveChanges();
             //Insert ContractDetail
@@ -45,7 +44,7 @@ namespace TourCore.Services
                 contractDetail.TourId = tour.Id;
                 contractDetail.NameTour = tour.NameTour;
                 contractDetail.Cost = tour.Cost;
-                contractDetail.PeopleGo = command.PeopleGo;
+                contractDetail.PeopleGo = Convert.ToInt32(command.PeopleGo);
                 contractDetail.ContractId = newContract.Id;
             }
             var newContractDetail = new ContractDetail();
@@ -59,5 +58,6 @@ namespace TourCore.Services
             _db.ContractDetails.Add(newContractDetail);
             _db.SaveChanges();
         }
+   
     }
 }

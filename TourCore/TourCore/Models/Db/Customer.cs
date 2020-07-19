@@ -18,8 +18,7 @@ namespace TourCore.Models.Db
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public DateTime DOB { get; set; }
-
+        
         public int? MembershipId { get; set; }
 
         public Customer(BookingTourCommand command)
@@ -28,8 +27,6 @@ namespace TourCore.Models.Db
             this.Address = command.Address;
             this.Phone = command.Phone;
             this.Email = command.Email;
-            this.DOB = command.DOB;
-
         }
         public Customer(CustomerViewModel customer)
         {
@@ -37,7 +34,6 @@ namespace TourCore.Models.Db
             this.Name = customer.Name;
             this.Address = customer.Address;
             this.Email = customer.Email;
-            this.DOB = customer.DOB;
             this.Phone = customer.Phone;
         }
         public Customer()

@@ -167,6 +167,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="logo text-center">
                 <a href="#"><img src="/admin/images/logo.png" alt="" /></a>
             </div>
+            <h3 style="color:deeppink;text-align:center">@ViewBag.name</h3>
             <div class="navigation">
                 <h3>Featured</h3>
                 <ul>
@@ -205,8 +206,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li><a href="#">Emails</a></li>
                 </ul>
                 <ul>
-                    <li><a href="#"><i class="cal"></i></a></li>
-                    <li><a href="#">Calendar</a></li>
+                    <li><a href="@Url.Action("Payment","Admin")"><i class="cal"></i></a></li>
+                    <li><a href="@Url.Action("Payment","Admin")">Đã thanh toán</a></li>
                 </ul>
                 <ul>
                     <li><a href="#"><i class="page"></i></a></li>

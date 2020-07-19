@@ -306,9 +306,6 @@ C:\Users\dev1\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\Ra
 C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\TourCore.csprojAssemblyReference.cache
 C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\TourCore.AssemblyInfoInputs.cache
 C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\TourCore.AssemblyInfo.cs
-C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\TourCore.csproj.CoreCompileInputs.cache
-C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\TourCore.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\TourCore.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\TourCore.RazorAssemblyInfo.cache
 C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\TourCore.RazorAssemblyInfo.cs
 C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\bin\Debug\netcoreapp3.1\appsettings.Development.json
@@ -479,3 +476,13 @@ C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\Raz
 C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\Razor\Views\Tour\FindTourPartial.cshtml.g.cs
 C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\Razor\Views\Tour\FindTour.cshtml.g.cs
 C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Login.cshtml.g.cs
+C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\SeeContractDetail.cshtml.g.cs
+C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\ReportMail.cshtml.g.cs
+C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\bin\Debug\netcoreapp3.1\MailKit.dll
+C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\bin\Debug\netcoreapp3.1\MimeKit.dll
+C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\TourCore.csproj.CoreCompileInputs.cache
+C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\TourCore.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\TourCore.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Payment.cshtml.g.cs
+C:\Users\Tan\source\repos\TourCore\TourCore\TourCore\obj\Debug\netcoreapp3.1\Razor\Views\Admin\EditContractDetail.cshtml.g.cs
